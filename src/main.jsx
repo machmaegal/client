@@ -5,12 +5,12 @@ import './index.css';
 import App from './App.jsx';
 import { AuthContextWrapper } from '../context/Auth.context.jsx';
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.querySelector('#root')).render(
   <StrictMode>
     <Router>
-      <AuthContextWrapper>
-        <App />
-      </AuthContextWrapper>
+      {/* <AuthContextWrapper> */}
+      <App />
+      {/* </AuthContextWrapper> */}
     </Router>
-  </StrictMode>,
+  </StrictMode>
 );

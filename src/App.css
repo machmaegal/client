@@ -9,3 +9,31 @@ body {
   background-color: black;
   color: green;
 }
+
+/*components*/
+nav {
+  height: 7vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: black;
+}
+
+/*components*/
+/*IDs*/
+/*classes*/
+.main-container {
+  width: 100vw;
+  height: 90vh;
+}
+
+.footer {
+  height: 3vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: black;
+}

@@ -1,9 +1,9 @@
-import 'dotenv/config';
+import React from 'react';
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const API_URL = process.env.APIURL;
+const API_URL = import.meta.env.APIURL;
 const AuthContext = React.createContext();
 
 const AuthContextWrapper = ({ children }) => {
@@ -32,6 +32,7 @@ const AuthContextWrapper = ({ children }) => {
                 setIsLoading(false);
                 setIsLoggedIn(true);
                 setUser(data.currentUser); //did we call it currentUser ?!
+                //setUser(data.newUser); 
             } catch (error) {
                 console.log("ERROR: verification went wrong", error);
                 setIsLoading(false);
@@ -39,7 +40,7 @@ const AuthContextWrapper = ({ children }) => {
                 setUser(null);
             }
         } else {
-            console.log("no token - new browser ?");
+            console.log("auth context: no token ?");
             setIsLoading(false);
             setIsLoggedIn(false);
             setUser(null);
