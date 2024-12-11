@@ -1,9 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 const DrinkCreatePage = () => {
-    return (
-        <div>Create a Drink</div>
-    );
-};
+	return <div>Create a Drink Page</div>
+}
 
-export default DrinkCreatePage;
+export default DrinkCreatePage
