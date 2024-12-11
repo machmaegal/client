@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/Auth.context";
 import { Navigate } from "react-router-dom";
 
-export const ProtectedRoute = ({ children }) => {
+export const ProtectedAdminRoute = ({ children }) => {
     const { isLoading, isLoggedIn, isAdmin } = useContext(AuthContext);
 
     if (isLoading) {
@@ -13,6 +13,9 @@ export const ProtectedRoute = ({ children }) => {
         return <Navigate to="/login" />;
     }
 
+    if (!isAdmin) {
+        return <Navigate to="/user" />;
+    }
+
     return <>{children}</>;
 };
-

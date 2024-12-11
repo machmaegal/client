@@ -2,7 +2,7 @@ import React from 'react';
 
 const DrinkCreatePage = () => {
     return (
-        <div>DrinkCreatePage</div>
+        <div>Create a Drink</div>
     );
 };
 

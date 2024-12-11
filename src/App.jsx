@@ -1,13 +1,14 @@
 import './App.css';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import LoginPage from '../pages/LoginPage';
-import SignUpPage from '../pages/SignUpPage';
+import { ProtectedRoute } from '../components/ProtectedRoute';
+import { ProtectedAdminRoute } from '../components/ProtectedAdminRoute';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
+import SignUpPage from '../pages/SignUpPage';
+import LoginPage from '../pages/LoginPage';
 import FoodListPage from '../pages/FoodListPage';
 import UserProfilePage from '../pages/UserProfilePage';
 import AdminPage from '../pages/AdminPage';
-import { ProtectedRoute } from '../components/ProtectedRoute';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
           <Route path='/login' element={<LoginPage />} />
           <Route path='/signup' element={<SignUpPage />} />
           <Route
-            path="/home"
+            path="/user"
             element={
               <ProtectedRoute>
                 <UserProfilePage />
@@ -30,9 +31,9 @@ function App() {
           <Route
             path="/admin"
             element={
-              //shall be protected for admin
-              <AdminPage />
-
+              <ProtectedAdminRoute>
+                <AdminPage />
+              </ProtectedAdminRoute>
             }
           />
         </Routes>

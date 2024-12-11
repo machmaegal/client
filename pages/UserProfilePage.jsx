@@ -4,7 +4,7 @@ import { AuthContext } from '../context/Auth.context';
 const UserProfilePage = () => {
 
     return (
-        <div>UserProfilePage</div>
+        <div> heeellooo. UserProfilePage</div>
     );
 };
 

@@ -1,14 +1,15 @@
-//import 'dotenv/config';
 import React from 'react';
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const SignUpPage = () => {
+    const APIURL = import.meta.env.VITE_APIURL;
+
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    //const navigate = useNavigate();
+    const navigate = useNavigate();
 
     function handleSignup(e) {
         e.preventDefault();
@@ -21,10 +22,10 @@ const SignUpPage = () => {
         axios.post(`${APIURL}/auth/signup`, newUser)
             .then((res) => {
                 console.log(res.data);
-                // navigate("/login"); //navigate back to food/drink list, but logged in               
+                navigate("/login");
 
             })
-            .catch((err) => console.log(err));
+            .catch((err) => console.log('frontend Error signup', err));
     }
 
     return (

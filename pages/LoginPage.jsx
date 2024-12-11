@@ -9,6 +9,7 @@ const LoginPage = () => {
     const [errorMessage, setErrorMessage] = useState(null);
     const navigate = useNavigate();
     const { storeToken, authenticateUser } = useContext(AuthContext);
+    const APIURL = import.meta.env.VITE_APIURL;
 
     function handleLogin(e) {
         e.preventDefault();
@@ -20,24 +21,31 @@ const LoginPage = () => {
 
         axios.post(`${APIURL}/auth/login`, currentUser)
             .then((res) => {
-                console.log(res.data);
-
-                storeToken(res.data.authToken);
+                storeToken(res.data.data);
+                // authenticateUser will return true or false for admin
                 return authenticateUser();
             })
-            .then(() => {
-                navigate("/home");
+            .then((isAdmin) => {
+                // value from the function authenticateUser if true is admin 
+                // if false is regular user
+                console.log(isAdmin);
+                if (isAdmin) {
+                    navigate("/admin");
+
+                } else {
+                    navigate("/user");
+
+                }
             })
             .catch((err) => {
                 console.log(err);
-                setErrorMessage(err.response.data.errorMessage);
+                setErrorMessage(err.res.data.message);
             });
     }
 
-    return (<div>
+    return (<div className='main-container'>
         <h1>Login Page</h1>
         <form onSubmit={handleLogin}>
-            {/* <form > */}
             <label>
                 Email:
                 <input
@@ -58,7 +66,7 @@ const LoginPage = () => {
         </form>
         <p style={{ color: "red" }}>{errorMessage}</p>
         <p>New Here?</p>
-        <Link to="/">Signup</Link>
+        {/* <Link to="/">Signup</Link> */}
     </div>);
 };
 

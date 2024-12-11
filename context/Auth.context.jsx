@@ -3,13 +3,14 @@ import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const API_URL = import.meta.env.APIURL;
 const AuthContext = React.createContext();
 
 const AuthContextWrapper = ({ children }) => {
+    const API_URL = import.meta.env.VITE_APIURL;
     const [user, setUser] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+    const [isAdmin, setIsAdmin] = useState(false);
     const navigate = useNavigate();
 
     function storeToken(token) {
@@ -23,28 +24,31 @@ const AuthContextWrapper = ({ children }) => {
         if (isToken) {
             try {
                 //validate
-                const { data } = await axios.get(`${API_URL}/auth/verify`, {
+                const { data } = await axios.get(`${API_URL}/auth/verify-user`, {
                     headers: {
-                        authorization: `Bearer ${isToken}`,
+                        Authorization: `Bearer ${isToken}`,
                     },
                 });
-                console.log("User verified !", data);
+                let currentUser = data['final point']['All Users'];
+                console.log("User verified !xxx", currentUser);
                 setIsLoading(false);
                 setIsLoggedIn(true);
-                setUser(data.currentUser); //did we call it currentUser ?!
-                //setUser(data.newUser); 
+                setUser(currentUser);
+                setIsAdmin(currentUser.admin);
+                return currentUser.admin;
             } catch (error) {
                 console.log("ERROR: verification went wrong", error);
                 setIsLoading(false);
                 setIsLoggedIn(false);
                 setUser(null);
+                setIsAdmin(false);
             }
         } else {
             console.log("auth context: no token ?");
             setIsLoading(false);
             setIsLoggedIn(false);
             setUser(null);
-            //navigate("/login");
+            navigate("/login");
         }
     }
 
@@ -67,6 +71,7 @@ const AuthContextWrapper = ({ children }) => {
                 isLoading,
                 isLoggedIn,
                 handleLogout,
+                isAdmin
             }}
         >
             {children}
