@@ -6,8 +6,8 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import FoodListPage from '../pages/FoodListPage';
 import UserProfilePage from '../pages/UserProfilePage';
-import FoodCreatePage from '../pages/FoodCreatePage';
-
+import AdminPage from '../pages/AdminPage';
+import { ProtectedRoute } from '../components/ProtectedRoute';
 
 function App() {
   return (
@@ -21,8 +21,9 @@ function App() {
           <Route
             path="/home"
             element={
-              //shall be protected for logged in user
-              <UserProfilePage />
+              <ProtectedRoute>
+                <UserProfilePage />
+              </ProtectedRoute>
 
             }
           />
@@ -30,7 +31,7 @@ function App() {
             path="/admin"
             element={
               //shall be protected for admin
-              <FoodCreatePage />
+              <AdminPage />
 
             }
           />

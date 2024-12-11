@@ -8,7 +8,7 @@ const SignUpPage = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     function handleSignup(e) {
         e.preventDefault();
@@ -21,7 +21,8 @@ const SignUpPage = () => {
         axios.post(`${APIURL}/auth/signup`, newUser)
             .then((res) => {
                 console.log(res.data);
-                // navigate("/login");
+                // navigate("/login"); //navigate back to food/drink list, but logged in               
+
             })
             .catch((err) => console.log(err));
     }
