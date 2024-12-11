@@ -8,9 +8,9 @@ const LoginPage = () => {
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(null);
     const navigate = useNavigate();
-    /* const { storeToken, authenticateUser } = useContext(AuthContext); */
+    const { storeToken, authenticateUser } = useContext(AuthContext);
 
-    /* function handleLogin(e) {
+    function handleLogin(e) {
         e.preventDefault();
 
         const currentUser = {
@@ -32,12 +32,12 @@ const LoginPage = () => {
                 console.log(err);
                 setErrorMessage(err.response.data.errorMessage);
             });
-    } */
+    }
 
     return (<div>
         <h1>Login Page</h1>
-        {/* <form onSubmit={handleLogin}> */}
-        <form >
+        <form onSubmit={handleLogin}>
+            {/* <form > */}
             <label>
                 Email:
                 <input

@@ -9,7 +9,7 @@ const AdminPage = () => {
         const getUserData = async () => {
             try {
                 const userData = await axios.get(
-                    `${APIURL}/auth/admin/${user._id}` //route admin there ? 
+                    `${APIURL}/auth/admin/${user._id}`
                 );
                 console.log(
                     "user from context",
