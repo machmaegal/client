@@ -30,21 +30,21 @@ const AuthContextWrapper = ({ children }) => {
                     },
                 });
                 let currentUser = data['final point']['All Users'];
-                //console.log("User verified !xxx", currentUser);
+
                 setIsLoading(false);
                 setIsLoggedIn(true);
                 setUser(currentUser);
                 setIsAdmin(currentUser.admin);
                 return currentUser.admin;
             } catch (error) {
-                console.log("ERROR: verification went wrong", error);
+
                 setIsLoading(false);
                 setIsLoggedIn(false);
                 setUser(null);
                 setIsAdmin(false);
             }
         } else {
-            console.log("auth context: no token ?");
+
             setIsLoading(false);
             setIsLoggedIn(false);
             setUser(null);

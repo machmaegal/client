@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 
 const DrinkCreatePage = () => {
@@ -16,10 +16,10 @@ const DrinkCreatePage = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-
+		const isToken = localStorage.getItem("authToken");
 		const newDrink = { name, price, description, label };
 
-		axios.post(`${API_URL}/food/new-drink`, newDrink)
+		axios.post(`${API_URL}/drink/new-drink`, { data: newDrink }, { headers: { 'Authorization': `Bearer ${isToken}` } })
 			.then((res) => {
 				console.log(res);
 

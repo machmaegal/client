@@ -18,7 +18,6 @@ const FoodCreatePage = () => {
         e.preventDefault();
         const isToken = localStorage.getItem("authToken");
         const newFood = { name, price, description, label };
-        //console.log('token from create Food: ', isToken);
 
         axios.post(`${API_URL}/food/new-dish`, { data: newFood }, { headers: { 'Authorization': `Bearer ${isToken}` } })
             .then((res) => {
@@ -30,7 +29,7 @@ const FoodCreatePage = () => {
                 setLabel('');
             })
             .catch((err) => {
-                console.log('the error', err);
+                console.log(err);
             });
 
     };
