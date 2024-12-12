@@ -30,7 +30,7 @@ const AuthContextWrapper = ({ children }) => {
                     },
                 });
                 let currentUser = data['final point']['All Users'];
-                console.log("User verified !xxx", currentUser);
+                //console.log("User verified !xxx", currentUser);
                 setIsLoading(false);
                 setIsLoggedIn(true);
                 setUser(currentUser);
