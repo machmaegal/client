@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from '../context/Auth.context';
 import axios from "axios";
 
@@ -6,6 +7,7 @@ const UserProfilePage = () => {
     const { user } = useContext(AuthContext);
     const API_URL = import.meta.env.VITE_APIURL;
     const isToken = localStorage.getItem("authToken");
+    const navigate = useNavigate();
 
     const [profileUser, setProfileUser] = useState();
 
@@ -32,6 +34,16 @@ const UserProfilePage = () => {
 
             })
             .catch((err) => console.log(err));
+    }
+
+    function handleDelete() {
+        try {
+            axios.delete(`${API_URL}/users/${user._id}`, profileUser, { headers: { 'Authorization': `Bearer ${isToken}` } });
+            //navigate('/');
+
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (
@@ -65,6 +77,10 @@ const UserProfilePage = () => {
                     />
 
                     <button>Update</button>
+                    <button
+                        onClick={() => { handleDelete(); }}>
+                        Delete
+                    </button>
                 </form>
             }
         </div>
