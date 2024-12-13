@@ -2,7 +2,8 @@ import { useState } from 'react';
 //import { AuthContext } from '../context/Auth.context';
 import FoodCreatePage from './FoodCreatePage';
 import DrinkCreatePage from './DrinkCreatePage';
-import UserUpdatePage from './UserUpdatePage';
+import UserListPage from './UserListPage';
+import OrderListPage from './OrderListPage';
 
 const AdminPage = () => {
     const [showCrudFood, setShowCrudFood] = useState('');
@@ -70,7 +71,9 @@ const AdminPage = () => {
 
             {showCrudFood && <FoodCreatePage />}
             {showCrudDrink && <DrinkCreatePage />}
-            {showCrudUser && <UserUpdatePage />}
+            {showCrudUser && <UserListPage />}
+            {/* {showCrudOrder && <OrderListPage />} */}
+
         </div>
     );
 };

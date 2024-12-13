@@ -5,22 +5,23 @@ const OrderListPage = () => {
 
     const [orders, setOrders] = useState();
 
-    /*  useEffect(() => {
-         const fetchOrders = async () => {
-             try {
-                 const response = await fetch(`${API_URL}/`); //route ?
- 
-                 const { data } = await response.json();
-                 console.log(data);
- 
-                 setOrders(data);
- 
-             } catch (error) {
-                 console.log(error);
-             }
-         };
-         fetchOrders();
-     }, []); */
+    useEffect(() => {
+        const fetchOrders = async () => {
+            try {
+                const isToken = localStorage.getItem("authToken");
+                const response = await fetch(`${API_URL}/orders/admin/all-orders`, { headers: { 'Authorization': `Bearer ${isToken}` } });
+
+                const { data } = await response.json();
+                console.log(data);
+
+                setOrders(data);
+
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchOrders();
+    }, []);
 
     return (
         <div className='main-container'>

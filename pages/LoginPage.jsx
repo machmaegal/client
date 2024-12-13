@@ -43,32 +43,36 @@ const LoginPage = () => {
             });
     }
 
-    return (<div className='main-container'>
-        <h1>Login</h1>
-        <form onSubmit={handleLogin}>
+    return (
+        <div className='main-container'>
+            <section>
+                <form className='form' onSubmit={handleLogin}>
+                    <fieldset className='fieldset'>
+                        <legend className='legend'>Sign In</legend>
 
-            <label htmlFor='email' ></label>
-            <input
-                type="email"
-                value={email}
-                placeholder='email address'
-                onChange={(e) => setEmail(e.target.value)}
-            />
+                        <label htmlFor='email' ></label>
+                        <input
+                            type='email'
+                            value={email}
+                            placeholder='email address'
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
 
-            <label htmlFor='password'></label>
-            <input
-                type="password"
-                value={password}
-                placeholder='password'
-                onChange={(e) => setPassword(e.target.value)}
-            />
+                        <label htmlFor='password'></label>
+                        <input
+                            type='password'
+                            value={password}
+                            placeholder='password'
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
 
-            <button>Login</button>
-        </form>
-        <p style={{ color: "red" }}>{errorMessage}</p>
-        <p>New Here?</p>
-        <Link to="/signup">Sign Up</Link>
-    </div>);
+                        <button className='submit-button'>Login</button>
+                    </fieldset>
+                </form>
+            </section>
+            <p>New Here?</p>
+            <Link to="/signup">Sign Up</Link>
+        </div>);
 };
 
 export default LoginPage;
