@@ -1,16 +1,16 @@
 import './App.css';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import { ProtectedRoute } from '../components/ProtectedRoute';
-import { ProtectedAdminRoute } from '../components/ProtectedAdminRoute';
-import Nav from '../components/Nav';
-import Footer from '../components/Footer';
-import SignUpPage from '../pages/SignUpPage';
-import LoginPage from '../pages/LoginPage';
-import FoodListPage from '../pages/FoodListPage';
-import DrinkListPage from '../pages/DrinkListPage';
-import UserProfilePage from '../pages/UserProfilePage';
-import AdminPage from '../pages/AdminPage';
-import ErrorPage from '../pages/ErrorPage';
+import { ProtectedRoute } from './components/ProtectedRoute';
+import { ProtectedAdminRoute } from './components/ProtectedAdminRoute';
+import Nav from './components/Nav';
+import Footer from './components/Footer';
+import SignUpPage from './pages/SignUpPage';
+import LoginPage from './pages/LoginPage';
+import FoodListPage from './pages/FoodListPage';
+import DrinkListPage from './pages/DrinkListPage';
+import UserProfilePage from './pages/UserProfilePage';
+import AdminPage from './pages/AdminPage';
+import ErrorPage from './pages/ErrorPage';
 
 function App() {
   return (

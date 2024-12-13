@@ -46,33 +46,36 @@ const LoginPage = () => {
     return (
         <div className='main-container'>
             <section>
+
                 <form className='form' onSubmit={handleLogin}>
-                    <fieldset className='fieldset'>
-                        <legend className='legend'>Sign In</legend>
 
-                        <label htmlFor='email' ></label>
-                        <input
-                            type='email'
-                            value={email}
-                            placeholder='email address'
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
+                    <label htmlFor='email'>email</label>
+                    <input
+                        className='input'
+                        id='email'
+                        type='email'
+                        value={email}
+                        placeholder='email address'
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
 
-                        <label htmlFor='password'></label>
-                        <input
-                            type='password'
-                            value={password}
-                            placeholder='password'
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
+                    <label htmlFor='password'>Password</label>
+                    <input
+                        className='input'
+                        id='password'
+                        type='password'
+                        value={password}
+                        placeholder='password'
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
 
-                        <button className='submit-button'>Login</button>
-                    </fieldset>
+                    <button>Login</button>
                 </form>
-            </section>
+
+            </section >
             <p>New Here?</p>
             <Link to="/signup">Sign Up</Link>
-        </div>);
+        </div >);
 };
 
 export default LoginPage;

@@ -36,6 +36,7 @@ const FoodCreatePage = () => {
 
     return (
         <div className='a'>
+
             <legend>create dish</legend>
             <form onSubmit={handleSubmit}>
                 <label htmlFor='name'></label>

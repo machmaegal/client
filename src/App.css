@@ -15,8 +15,8 @@
 }
 
 body {
-  background-color: black;
-  color: green;
+  /* background-color: black;
+  color: green; */
 }
 
 /*components*/
@@ -49,6 +49,16 @@ nav {
   justify-content: center
 }
 
+.input {
+  font-size: 16px;
+  font-size: max(16px, 1em);
+  font-family: inherit;
+  padding: 0.25em 0.5em;
+  background-color: #fff;
+  border: 2px solid var(--input-border);
+  border-radius: 4px;
+}
+
 .footer {
   height: 3vh;
 
@@ -72,17 +82,11 @@ nav {
 @media only screen and (min-width:20em) {
 
   /*COMPONENTS*/
-  .fieldset {
-    display: flex;
-    border-radius: 10px;
-  }
-
-  .legend {
-    font-size: 2rem;
-  }
 
   .form {
     gap: 5px;
+
+    background-color: brown;
   }
 
   .submit-button {
