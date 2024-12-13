@@ -10,6 +10,7 @@ import FoodListPage from '../pages/FoodListPage';
 import DrinkListPage from '../pages/DrinkListPage';
 import UserProfilePage from '../pages/UserProfilePage';
 import AdminPage from '../pages/AdminPage';
+import ErrorPage from '../pages/ErrorPage';
 
 function App() {
   return (
@@ -38,6 +39,8 @@ function App() {
               </ProtectedAdminRoute>
             }
           />
+          <Route path='*' element={<ErrorPage />
+          } />
         </Routes>
       </div>
       <Footer />

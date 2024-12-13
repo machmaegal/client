@@ -32,27 +32,29 @@ const SignUpPage = () => {
         <div className='main-container'>
             <h1>create an account</h1>
             <form onSubmit={handleSignup}>
-                <label htmlFor="name"> Name
-                    <input
-                        type='name'
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    ></input>
-                </label>
-                <label htmlFor="email"> Email
-                    <input
-                        type='email'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    ></input>
-                </label>
-                <label htmlFor="password" value={password}> Password
-                    <input
-                        type='password'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    ></input>
-                </label>
+                <label htmlFor="name"></label>
+                <input
+                    type='name'
+                    value={name}
+                    placeholder='Name'
+                    onChange={(e) => setName(e.target.value)}
+                />
+                <label htmlFor='email'></label>
+                <input
+                    type='email'
+                    value={email}
+                    placeholder='Email'
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+
+                <label htmlFor='password' value={password}></label>
+                <input
+                    type='password'
+                    value={password}
+                    placeholder='Password'
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+
                 <button>Sign Up</button>
             </form>
             <p>Alredy registered ?</p>

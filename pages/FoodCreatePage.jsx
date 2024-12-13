@@ -36,16 +36,31 @@ const FoodCreatePage = () => {
 
     return (
         <div className='a'>
-            <h3>create dish</h3>
+            <legend>create dish</legend>
             <form onSubmit={handleSubmit}>
                 <label htmlFor='name'></label>
-                <input name="name" required value={name} onChange={handleNameInput} type="text" placeholder="Name" />
+                <input
+                    name="name" required
+                    value={name}
+                    onChange={handleNameInput}
+                    type="text" placeholder="Name"
+                />
 
                 <label htmlFor='price'></label>
-                <input name="price" required value={price} onChange={handlePriceInput} type="Number" placeholder="Price" />
+                <input
+                    name="price" required
+                    value={price}
+                    onChange={handlePriceInput}
+                    type="Number"
+                    placeholder="Price" />
 
                 <label htmlFor='description'></label>
-                <input name="description" value={description} onChange={handleDescriptionInput} type="text" placeholder="Description" />
+                <textarea
+                    name="description"
+                    value={description}
+                    onChange={handleDescriptionInput}
+                    type="text"
+                    placeholder="Description" />
 
                 <label htmlFor='label'></label>
                 special label

@@ -8,7 +8,7 @@ const UserProfilePage = () => {
 
 
     /* useEffect(() => {
-        axios.get(`${API_URL}/user/:id`)
+        axios.get(`${API_URL}/users/:id`)
             .then((response) => setUser(response.data))
             .catch((err) => console.log(err));
     }, [id]); */

@@ -24,8 +24,15 @@ const FoodListPage = () => {
 	return (
 		<div className='main-container'>
 			{foods &&
-				foods.map((food, i) => {
-					return <div key={i}>{food.name}</div>
+				foods.map((food) => {
+					return (
+						<div key={food._id} className='item-card'>
+							<div>{food.name}</div>
+							<div>{food.name}</div>
+							<div>{food.name}</div>
+							<div>{food.name}</div>
+						</div>
+					)
 				})}
 		</div>
 	)
