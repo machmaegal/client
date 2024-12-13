@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react'
-
+import { useState, useEffect, useContext } from 'react'
+import { AuthContext } from '../context/Auth.context'
 const FoodListPage = () => {
+	const { isLoggedIn, setOrder, order } = useContext(AuthContext)
 	const API_URL = import.meta.env.VITE_APIURL
-	const [foodCart, setFoodCart] = useState([])
+
 	function handdleAddToCart(item) {
-		setFoodCart([item, ...foodCart])
+		setOrder({ ...order, food: [item, ...order.food] })
 	}
 	// --------------------------
 	// function to convert to camel case
@@ -12,9 +13,9 @@ const FoodListPage = () => {
 		let newString = ''
 
 		this.split(' ').forEach(function (str) {
-			newString = `${newString} ${str
-				.substring(0, 1)
-				.toUpperCase()}${str.substring(1)}` //XD
+			newString = `${newString} ${str.substring(0, 1).toUpperCase()}${str
+				.substring(1)
+				.toLowerCase()}` //XD
 		})
 
 		return newString.substring(1)
@@ -50,8 +51,6 @@ const FoodListPage = () => {
 							<div>{food.price + `€`}</div>
 							<button
 								onClick={() => {
-									console.log(isLoggedIn)
-
 									handdleAddToCart(food._id)
 								}}
 							>
