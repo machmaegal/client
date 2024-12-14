@@ -3,13 +3,30 @@ import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/Auth.context'
 import axios from 'axios'
 const OrderListPage = () => {
-	const navigate = useNavigate()
-	const { user, isLoggedIn, isAdmin, setOrder, order } =
+	// const navigate = useNavigate()
+	const { user, isLoggedIn, isAdmin /*setOrder, order */ } =
 		useContext(AuthContext)
 	const [orderDisplayed, setOrderdisplayed] = useState('')
+
 	const API_URL = import.meta.env.VITE_APIURL
 	const isToken = localStorage.getItem('authToken')
 
+	// --------------------------
+	// delete order
+	async function hadleDelete(id) {
+		let deletedOrder = await axios.delete(
+			`${API_URL}/orders/user/${user._id}/user-order/${id}`,
+			{ headers: { Authorization: `Bearer ${isToken}` } }
+		)
+		let orders = orderDisplayed.filter((order) => {
+			if (order._id === id) {
+				// console.log(order._id, id)
+			} else {
+				return order
+			}
+		})
+		setOrderdisplayed(orders)
+	}
 	// ---------------------
 	// user getting one order after click
 	async function getOneOrder(id) {
@@ -55,7 +72,6 @@ const OrderListPage = () => {
 		}
 		fetchOrders()
 	}, [user._id])
-	console.log(orderDisplayed)
 
 	return (
 		<div>
@@ -67,23 +83,41 @@ const OrderListPage = () => {
 						return (
 							<div
 								key={order._id}
-								onClick={() => {
-									if (!isAdmin) {
-										return getOneOrder(order._id)
-									}
-									return adminGetOneOrder(order._id)
-								}}
+								// onClick={() => {
+								// 	if (!isAdmin) {
+								// 		return getOneOrder(order._id)
+								// 	}
+								// 	return adminGetOneOrder(order._id)
+								// }}
 							>
 								<div>{order._id}</div>
 								<div>{order.customer.name}</div>
 								<div>{order.customer.email}</div>
+
 								{order.food.map((food, i) => {
-									return <div key={i}>{food.name}</div>
+									return (
+										<div key={i}>
+											<p>{food.name}</p>
+											<p>{food.price}</p>
+										</div>
+									)
 								})}
 								{order.drink.map((drink, i) => {
-									return <div key={i}>{drink.name}</div>
+									return (
+										<div key={i}>
+											<p>{drink.name}</p>
+											<p>{drink.price}</p>
+										</div>
+									)
 								})}
-								<button>Delete Order</button>
+
+								<button
+									onClick={() => {
+										hadleDelete(order._id)
+									}}
+								>
+									Delete Order
+								</button>
 								<button>Edit Order</button>
 							</div>
 						)
