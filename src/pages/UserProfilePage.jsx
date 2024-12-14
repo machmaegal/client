@@ -4,46 +4,45 @@ import { AuthContext } from '../context/Auth.context';
 import axios from "axios";
 
 const UserProfilePage = () => {
-    const { user } = useContext(AuthContext);
+    const { user, handleLogout } = useContext(AuthContext);
     const API_URL = import.meta.env.VITE_APIURL;
     const isToken = localStorage.getItem("authToken");
-    const navigate = useNavigate();
-
     const [profileUser, setProfileUser] = useState();
 
+    //get the user data from the database and store the data in user state
     useEffect(() => {
         axios.get(`${API_URL}/users/${user._id}`, { headers: { 'Authorization': `Bearer ${isToken}` } })
             .then((res) => setProfileUser(res.data.data))
-
             .catch((err) => console.log(err));
     }, []);
 
-    //handle form inputs
+    //handle form inputs the user wants to update
     function handleChange(e) {
         const whatWasTyped = e.target.value;
         const inputThatIsUsed = e.target.name;
         setProfileUser({ ...profileUser, [inputThatIsUsed]: whatWasTyped });
     }
 
+    //store the updated data in user state and send the changes to database
     function handleUpdate(e) {
         e.preventDefault();
-
-        axios.put(`${API_URL}/users/${user._id}`, profileUser, { headers: { 'Authorization': `Bearer ${isToken}` } })
-            .then((res) => {
-                console.log(res);
-
-            })
+        axios.put(`${API_URL}/users/${user._id}`,
+            profileUser,
+            { headers: { 'Authorization': `Bearer ${isToken}` } })
+            .then((res) => console.log(res))
             .catch((err) => console.log(err));
     }
 
-    function handleDelete() {
-        try {
-            axios.delete(`${API_URL}/users/${user._id}`, profileUser, { headers: { 'Authorization': `Bearer ${isToken}` } });
-            //navigate('/');
-
-        } catch (error) {
-            console.log(error);
-        }
+    //send delete request for user to database and remove token from browser/sign out
+    async function handleDelete(e) {
+        e.preventDefault();
+        await axios.delete(`${API_URL}/users/${user._id}`,
+            { headers: { 'Authorization': `Bearer ${isToken}` } })
+            .then((res) => {
+                console.log(res);
+                handleLogout();
+            })
+            .catch((error) => console.log(error));
     }
 
     return (
@@ -52,14 +51,17 @@ const UserProfilePage = () => {
                 <form onSubmit={handleUpdate}>
                     <label htmlFor="name"></label>
                     <input
+                        id='name'
                         type='text'
                         name='name'
                         value={profileUser.name}
                         placeholder='Name'
                         onChange={handleChange}
                     />
+
                     <label htmlFor='email'></label>
                     <input
+                        id='email'
                         type='email'
                         name='email'
                         value={profileUser.email}
@@ -69,16 +71,17 @@ const UserProfilePage = () => {
 
                     <label htmlFor='password'></label>
                     <input
+                        id='password'
                         type='password'
                         name='password'
                         value={profileUser.password}
-                        placeholder='Password'
+                        placeholder='New Password'
                         onChange={handleChange}
                     />
 
                     <button>Update</button>
                     <button
-                        onClick={() => { handleDelete(); }}>
+                        onClick={handleDelete}>
                         Delete
                     </button>
                 </form>
