@@ -6,8 +6,60 @@ const OrderListPage = () => {
 	// const navigate = useNavigate()
 	const { user, isLoggedIn, isAdmin /*setOrder, order */ } =
 		useContext(AuthContext)
-	const [orderDisplayed, setOrderdisplayed] = useState('')
 
+	const [orderDisplayed, setOrderdisplayed] = useState('')
+	// --------------------------
+	// update order
+	const [updatedOrder, setUpdatedOrder] = useState({})
+
+	async function handleUpdateFood(id) {
+		let foodArr = updatedOrder.food.map((food) => food._id)
+		let drinkArr = updatedOrder.drink.map((drink) => drink._id)
+		let foodArrCopy = [...foodArr]
+		let i = foodArrCopy.indexOf(id)
+		if (i > -1) {
+			foodArrCopy.splice(i, 1)
+		}
+
+		let orderToSend = {
+			customer: updatedOrder.customer._id,
+			food: foodArrCopy,
+			drink: drinkArr,
+		}
+
+		let updateDB = await axios.put(
+			`${API_URL}/orders/user/${user._id}/user-order/${updatedOrder._id}`,
+			{ data: orderToSend },
+			{ headers: { Authorization: `Bearer ${isToken}` } }
+		)
+		setUpdatedOrder({})
+	}
+	async function handleUpdateDrink(id) {
+		let foodArr = updatedOrder.food.map((food) => food._id)
+		let drinkArr = updatedOrder.drink.map((drink) => drink._id)
+		let drinkArrCopy = [...drinkArr]
+		let i = drinkArrCopy.indexOf(id)
+		if (i > -1) {
+			drinkArrCopy.splice(i, 1)
+		}
+
+		let drinkUp = []
+
+		let orderToSend = {
+			customer: updatedOrder.customer._id,
+			food: foodArr,
+			drink: drinkArrCopy,
+		}
+
+		let updateDB = await axios.put(
+			`${API_URL}/orders/user/${user._id}/user-order/${updatedOrder._id}`,
+			{ data: orderToSend },
+			{ headers: { Authorization: `Bearer ${isToken}` } }
+		)
+		setUpdatedOrder({})
+	}
+
+	// -------------------------------------------
 	const API_URL = import.meta.env.VITE_APIURL
 	const isToken = localStorage.getItem('authToken')
 
@@ -71,7 +123,7 @@ const OrderListPage = () => {
 			}
 		}
 		fetchOrders()
-	}, [user._id])
+	}, [user._id, updatedOrder._id])
 
 	return (
 		<div>
@@ -83,12 +135,10 @@ const OrderListPage = () => {
 						return (
 							<div
 								key={order._id}
-								// onClick={() => {
-								// 	if (!isAdmin) {
-								// 		return getOneOrder(order._id)
-								// 	}
-								// 	return adminGetOneOrder(order._id)
-								// }}
+								onMouseEnter={() => {
+									setUpdatedOrder(order)
+									// setFinalUpdate('')
+								}}
 							>
 								<div>{order._id}</div>
 								<div>{order.customer.name}</div>
@@ -99,6 +149,13 @@ const OrderListPage = () => {
 										<div key={i}>
 											<p>{food.name}</p>
 											<p>{food.price}</p>
+											<button
+												onClick={() => {
+													handleUpdateFood(food._id)
+												}}
+											>
+												Remove item
+											</button>
 										</div>
 									)
 								})}
@@ -107,6 +164,13 @@ const OrderListPage = () => {
 										<div key={i}>
 											<p>{drink.name}</p>
 											<p>{drink.price}</p>
+											<button
+												onClick={() => {
+													handleUpdateDrink(drink._id)
+												}}
+											>
+												Remove item
+											</button>
 										</div>
 									)
 								})}
