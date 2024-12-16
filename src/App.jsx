@@ -14,6 +14,8 @@ import ErrorPage from './pages/ErrorPage'
 import OrderListPage from './pages/OrderListPage'
 import OrderDetailPage from './pages/OrderDetailPage'
 import UserUpdateUser from './pages/UserUpdateUser'
+import AdminFoodUpdate from './pages/AdminFoodUpdate'
+import AdminDrinkUpdate from './pages/AdminDrinkUpdate'
 
 function App() {
 	return (
@@ -63,6 +65,22 @@ function App() {
 						element={
 							<ProtectedAdminRoute>
 								<UserUpdateUser />
+							</ProtectedAdminRoute>
+						}
+					/>
+					<Route
+						path='/admin/update-food'
+						element={
+							<ProtectedAdminRoute>
+								<AdminFoodUpdate />
+							</ProtectedAdminRoute>
+						}
+					/>
+					<Route
+						path='/admin/update-drink'
+						element={
+							<ProtectedAdminRoute>
+								<AdminDrinkUpdate />
 							</ProtectedAdminRoute>
 						}
 					/>

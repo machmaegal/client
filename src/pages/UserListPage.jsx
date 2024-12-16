@@ -4,11 +4,11 @@ import { AuthContext } from '../context/Auth.context'
 import axios from 'axios'
 
 const UserListPage = () => {
+	const [users, setUsers] = useState()
 	const { setUserToUpdate } = useContext(AuthContext)
 	const navigate = useNavigate()
 	const API_URL = import.meta.env.VITE_APIURL
 	const token = localStorage.getItem('authToken')
-	const [users, setUsers] = useState()
 
 	async function handleDeleteUser(currUser) {
 		let updatedUsers = users.filter((user) => {
