@@ -13,6 +13,7 @@ import AdminPage from './pages/AdminPage'
 import ErrorPage from './pages/ErrorPage'
 import OrderListPage from './pages/OrderListPage'
 import OrderDetailPage from './pages/OrderDetailPage'
+import UserUpdateUser from './pages/UserUpdateUser'
 
 function App() {
 	return (
@@ -54,6 +55,14 @@ function App() {
 						element={
 							<ProtectedAdminRoute>
 								<AdminPage />
+							</ProtectedAdminRoute>
+						}
+					/>
+					<Route
+						path='/admin/update-user'
+						element={
+							<ProtectedAdminRoute>
+								<UserUpdateUser />
 							</ProtectedAdminRoute>
 						}
 					/>

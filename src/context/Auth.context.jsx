@@ -21,6 +21,7 @@ const AuthContextWrapper = ({ children }) => {
 		food: [],
 		drink: [],
 	})
+	const [userToUpdate, setUserToUpdate] = useState('')
 	const navigate = useNavigate()
 
 	function storeToken(token) {
@@ -87,6 +88,8 @@ const AuthContextWrapper = ({ children }) => {
 				setOrder,
 				orderDetail,
 				setOrderDetail,
+				userToUpdate,
+				setUserToUpdate,
 			}}
 		>
 			{children}
