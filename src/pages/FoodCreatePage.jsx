@@ -35,46 +35,53 @@ const FoodCreatePage = () => {
     };
 
     return (
-        <div className='a'>
+        <div className='main-container'>
 
-            <legend>create dish</legend>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor='name'></label>
-                <input
-                    name="name" required
-                    value={name}
-                    onChange={handleNameInput}
-                    type="text" placeholder="Name"
-                />
+            <h1>create dish</h1>
+            <div className='form-container'>
 
-                <label htmlFor='price'></label>
-                <input
-                    name="price" required
-                    value={price}
-                    onChange={handlePriceInput}
-                    type="Number"
-                    placeholder="Price" />
+                <form className='form' onSubmit={handleSubmit}>
+                    <label htmlFor='name'></label>
+                    <input
+                        className='input'
+                        name="name" required
+                        value={name}
+                        onChange={handleNameInput}
+                        type="text" placeholder="Name"
+                    />
 
-                <label htmlFor='description'></label>
-                <textarea
-                    name="description"
-                    value={description}
-                    onChange={handleDescriptionInput}
-                    type="text"
-                    placeholder="Description" />
+                    <label htmlFor='price'></label>
+                    <input
+                        name="price" required
+                        className='input'
+                        value={price}
+                        onChange={handlePriceInput}
+                        type="Number"
+                        placeholder="Price" />
 
-                <label htmlFor='label'></label>
-                special label
-                <select name="label" value={label} onChange={handleLabelInput}>
-                    <option value="">-- None --</option>
-                    <option value="vegan">Vegan</option>
-                    <option value="vegetarian">Vegetarian</option>
-                    <option value="halal">Halal</option>
-                    <option value="gluten-free">Gluten-Free</option>
-                </select>
+                    <label htmlFor='description'></label>
+                    <textarea
+                        className='input description'
+                        name="description"
+                        value={description}
+                        onChange={handleDescriptionInput}
+                        type="text"
+                        placeholder="Description" />
 
-                <button>Create Food</button>
-            </form>
+                    <label htmlFor='label'></label>
+                    special label
+                    <select className='input' name="label" value={label} onChange={handleLabelInput}>
+                        <option value="">-- None --</option>
+                        <option value="vegan">Vegan</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="halal">Halal</option>
+                        <option value="gluten-free">Gluten-Free</option>
+                    </select>
+
+                    <button className='submit-button'>Create Food</button>
+                </form>
+
+            </div>
         </div>
     );
 };

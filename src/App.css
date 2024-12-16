@@ -15,8 +15,12 @@
 }
 
 body {
-  background-color: black;
-  color: green;
+  background-color: rgb(116, 8, 8);
+  color: rgb(228, 224, 23);
+}
+
+a {
+  color: rgb(228, 224, 23);
 }
 
 /*components*/
@@ -42,6 +46,13 @@ nav {
   justify-content: flex-start;
 }
 
+.form-container {
+  padding: 1em;
+  background-color: rgb(218, 210, 210);
+  border: none;
+  border-radius: 10px;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -52,7 +63,6 @@ nav {
 .input {
   font-size: 16px;
   font-size: max(16px, 1em);
-  font-family: inherit;
   padding: 0.25em 0.5em;
   background-color: #fff;
   border: 2px solid var(--input-border);
@@ -61,11 +71,21 @@ nav {
 
 .footer {
   height: 3vh;
-
   display: flex;
   align-items: center;
   justify-content: center;
+}
 
+.nav-select {
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.description {
+  padding: 0 0.15rem;
+  min-height: 20vh;
+  width: 100%;
 }
 
 /*Admin Page*/
@@ -82,18 +102,67 @@ nav {
 @media only screen and (min-width:20em) {
 
   /*COMPONENTS*/
-
   .form {
     gap: 5px;
-
-    background-color: brown;
+    flex-direction: column;
+    color: black;
   }
 
   .submit-button {
     margin-top: 0.2em;
+    padding: 0.3em;
+    border-radius: 5px;
+    border: solid 1px gray;
+    box-shadow: 0 0 2px black;
   }
 
   /*IDs*/
+  /*classes*/
+
+  /*PAGES*/
+  /*classes*/
+  /*IDs*/
+}
+
+@media only screen and (min-width:40em) {
+
+  /*COMPONENTS*/
+  nav {
+    justify-content: space-between;
+  }
+
+  /*IDs*/
+  #admin-menu {
+    justify-content: center;
+    gap: 20px
+  }
+
+  /*classes*/
+
+  /*PAGES*/
+  /*classes*/
+  /*IDs*/
+}
+
+@media only screen and (min-width:60em) {
+
+  /*COMPONENTS*/
+  nav {
+    justify-content: space-between;
+  }
+
+  .nav-select {
+    justify-content: flex-start;
+    gap: 50px;
+  }
+
+
+  /*IDs*/
+  #admin-menu {
+    justify-content: center;
+    gap: 20px
+  }
+
   /*classes*/
 
   /*PAGES*/
