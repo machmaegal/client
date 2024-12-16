@@ -1,44 +1,44 @@
-import { useState } from 'react';
+import { useState } from 'react'
 //import { AuthContext } from '../context/Auth.context';
-import FoodCreatePage from './FoodCreatePage';
-import DrinkCreatePage from './DrinkCreatePage';
-import UserListPage from './UserListPage';
-import OrderListPage from './OrderListPage';
-import OrderDetailPage from './OrderDetailPage';
+import FoodCreatePage from './FoodCreatePage'
+import DrinkCreatePage from './DrinkCreatePage'
+import UserListPage from './UserListPage'
+import OrderListPage from './OrderListPage'
+import OrderDetailPage from './OrderDetailPage'
 const AdminPage = () => {
-	const [showCrudFood, setShowCrudFood] = useState('');
-	const [showCrudDrink, setShowCrudDrink] = useState('');
-	const [showCrudUser, setShowCrudUser] = useState('');
-	const [showCrudOrder, setShowCrudOrder] = useState('');
+	const [showCrudFood, setShowCrudFood] = useState('')
+	const [showCrudDrink, setShowCrudDrink] = useState('')
+	const [showCrudUser, setShowCrudUser] = useState('')
+	const [showCrudOrder, setShowCrudOrder] = useState('')
 
 	function handleStateOfView(e) {
 		switch (true) {
 			case e.target.value === 'crud-food':
-				setShowCrudFood(true);
-				setShowCrudDrink('');
-				setShowCrudUser('');
-				setShowCrudOrder('');
-				break;
+				setShowCrudFood(true)
+				setShowCrudDrink('')
+				setShowCrudUser('')
+				setShowCrudOrder('')
+				break
 			case e.target.value === 'crud-drink':
-				setShowCrudFood('');
-				setShowCrudDrink(true);
-				setShowCrudUser('');
-				setShowCrudOrder('');
-				break;
+				setShowCrudFood('')
+				setShowCrudDrink(true)
+				setShowCrudUser('')
+				setShowCrudOrder('')
+				break
 			case e.target.value === 'crud-user':
-				setShowCrudFood('');
-				setShowCrudDrink('');
-				setShowCrudUser(true);
-				setShowCrudOrder('');
-				break;
+				setShowCrudFood('')
+				setShowCrudDrink('')
+				setShowCrudUser(true)
+				setShowCrudOrder('')
+				break
 			case e.target.value === 'crud-order':
-				setShowCrudFood('');
-				setShowCrudDrink('');
-				setShowCrudUser('');
-				setShowCrudOrder(true);
-				break;
+				setShowCrudFood('')
+				setShowCrudDrink('')
+				setShowCrudUser('')
+				setShowCrudOrder(true)
+				break
 			default:
-				break;
+				break
 		}
 	}
 
@@ -93,9 +93,9 @@ const AdminPage = () => {
 			{showCrudFood && <FoodCreatePage />}
 			{showCrudDrink && <DrinkCreatePage />}
 			{showCrudUser && <UserListPage />}
-			{showCrudOrder && <OrderDetailPage />}
+			{showCrudOrder && <OrderListPage />}
 		</div>
-	);
-};
+	)
+}
 
-export default AdminPage;
+export default AdminPage

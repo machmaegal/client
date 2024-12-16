@@ -12,6 +12,7 @@ import UserProfilePage from './pages/UserProfilePage'
 import AdminPage from './pages/AdminPage'
 import ErrorPage from './pages/ErrorPage'
 import OrderListPage from './pages/OrderListPage'
+import OrderDetailPage from './pages/OrderDetailPage'
 
 function App() {
 	return (
@@ -23,12 +24,28 @@ function App() {
 					<Route path='/drinks' element={<DrinkListPage />} />
 					<Route path='/login' element={<LoginPage />} />
 					<Route path='/signup' element={<SignUpPage />} />
-					<Route path='/order' element={<OrderListPage />} />
+
 					<Route
 						path='/user'
 						element={
 							<ProtectedRoute>
 								<UserProfilePage />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path='/user/my-order'
+						element={
+							<ProtectedRoute>
+								<OrderDetailPage />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path='/user/all-orders'
+						element={
+							<ProtectedRoute>
+								<OrderListPage />
 							</ProtectedRoute>
 						}
 					/>

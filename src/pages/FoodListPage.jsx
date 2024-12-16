@@ -1,43 +1,40 @@
-import { useState, useEffect, useContext } from 'react';
-import { AuthContext } from '../context/Auth.context';
+import { useState, useEffect, useContext } from 'react'
+import { AuthContext } from '../context/Auth.context'
 const FoodListPage = () => {
-	const { isLoggedIn, setOrder, order } = useContext(AuthContext);
-	const API_URL = import.meta.env.VITE_APIURL;
+	const { user, isLoggedIn, setOrder, order, orderDetail, setOrderDetail } =
+		useContext(AuthContext)
+	const API_URL = import.meta.env.VITE_APIURL
 
 	function handdleAddToCart(item) {
-		setOrder({ ...order, food: [item, ...order.food] });
+		setOrder({
+			...order,
+			food: [item._id, ...order.food],
+			customer: user._id,
+		})
+		setOrderDetail({
+			...orderDetail,
+			food: [item, ...orderDetail.food],
+			customer: user._id,
+		})
 	}
-	// --------------------------
-	// function to convert to camel case
-	/* String.prototype.camelCase = function () {
-		let newString = '';
 
-		this.split(' ').forEach(function (str) {
-			newString = `${newString} ${str.substring(0, 1).toUpperCase()}${str
-				.substring(1)
-				.toLowerCase()}`;
-		});
-
-		return newString.substring(1);
-	}; */
-	// ---------------------------------------
-	const [foods, setFoods] = useState();
+	const [foods, setFoods] = useState()
 
 	useEffect(() => {
 		const fetchFoods = async () => {
 			try {
-				const response = await fetch(`${API_URL}/food/dishes`);
+				const response = await fetch(`${API_URL}/food/dishes`)
 
-				const { data } = await response.json();
+				const { data } = await response.json()
 				//console.log(data);
 
-				setFoods(data);
+				setFoods(data)
 			} catch (error) {
-				console.log(error);
+				console.log(error)
 			}
-		};
-		fetchFoods();
-	}, []);
+		}
+		fetchFoods()
+	}, [])
 
 	return (
 		<div className='main-container'>
@@ -51,16 +48,20 @@ const FoodListPage = () => {
 							<div>{food.price + `€`}</div>
 							<button
 								onClick={() => {
-									handdleAddToCart(food._id);
+									if (isLoggedIn) {
+										handdleAddToCart(food)
+									} else {
+										alert('Please Login!!')
+									}
 								}}
 							>
 								Add to Cart!
 							</button>
 						</div>
-					);
+					)
 				})}
 		</div>
-	);
-};
+	)
+}
 
-export default FoodListPage;
+export default FoodListPage

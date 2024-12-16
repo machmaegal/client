@@ -8,18 +8,16 @@ const LoginPage = () => {
 	const [password, setPassword] = useState('')
 	const [errorMessage, setErrorMessage] = useState(null)
 	const navigate = useNavigate()
-	const { storeToken, authenticateUser, setOrder, order, user } =
-		useContext(AuthContext)
+	const {
+		storeToken,
+		authenticateUser,
+		setOrder,
+		order,
+		user,
+		orderDetail,
+		setOrderDetail,
+	} = useContext(AuthContext)
 	const APIURL = import.meta.env.VITE_APIURL
-
-	async function handleCreateOrder(currentOrder, userId) {
-		const token = localStorage.getItem('authToken')
-		let orderCreated = await axios.post(
-			`${APIURL}/orders/user/${userId}/make-order`,
-			{ data: currentOrder },
-			{ headers: { Authorization: `Bearer ${token}` } }
-		)
-	}
 
 	async function handleLogin(e) {
 		e.preventDefault()
@@ -42,13 +40,13 @@ const LoginPage = () => {
 
 				if (isAdmin) {
 					setOrder({ ...order, customer: user._id })
-					handleCreateOrder(order, user._id)
+					setOrderDetail({ ...order, customer: user._id })
 					navigate('/admin')
 				} else {
 					//console.log(user._id)
 
 					setOrder({ ...order, customer: user._id })
-					handleCreateOrder(order, user._id)
+					setOrderDetail({ ...order, customer: user._id })
 					navigate('/user')
 				}
 			})
@@ -60,6 +58,7 @@ const LoginPage = () => {
 
 	return (
 		<div className='main-container'>
+			<h1>Login Page</h1>
 			<div className='form-container'>
 				<form className='form' onSubmit={handleLogin}>
 					<label htmlFor='email'></label>

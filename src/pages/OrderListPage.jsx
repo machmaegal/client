@@ -12,52 +12,52 @@ const OrderListPage = () => {
 	// update order
 	const [updatedOrder, setUpdatedOrder] = useState({})
 
-	async function handleUpdateFood(id) {
-		let foodArr = updatedOrder.food.map((food) => food._id)
-		let drinkArr = updatedOrder.drink.map((drink) => drink._id)
-		let foodArrCopy = [...foodArr]
-		let i = foodArrCopy.indexOf(id)
-		if (i > -1) {
-			foodArrCopy.splice(i, 1)
-		}
+	// async function handleUpdateFood(id) {
+	// 	let foodArr = updatedOrder.food.map((food) => food._id)
+	// 	let drinkArr = updatedOrder.drink.map((drink) => drink._id)
+	// 	let foodArrCopy = [...foodArr]
+	// 	let i = foodArrCopy.indexOf(id)
+	// 	if (i > -1) {
+	// 		foodArrCopy.splice(i, 1)
+	// 	}
 
-		let orderToSend = {
-			customer: updatedOrder.customer._id,
-			food: foodArrCopy,
-			drink: drinkArr,
-		}
+	// 	let orderToSend = {
+	// 		customer: updatedOrder.customer._id,
+	// 		food: foodArrCopy,
+	// 		drink: drinkArr,
+	// 	}
 
-		let updateDB = await axios.put(
-			`${API_URL}/orders/user/${user._id}/user-order/${updatedOrder._id}`,
-			{ data: orderToSend },
-			{ headers: { Authorization: `Bearer ${isToken}` } }
-		)
-		setUpdatedOrder({})
-	}
-	async function handleUpdateDrink(id) {
-		let foodArr = updatedOrder.food.map((food) => food._id)
-		let drinkArr = updatedOrder.drink.map((drink) => drink._id)
-		let drinkArrCopy = [...drinkArr]
-		let i = drinkArrCopy.indexOf(id)
-		if (i > -1) {
-			drinkArrCopy.splice(i, 1)
-		}
+	// 	let updateDB = await axios.put(
+	// 		`${API_URL}/orders/user/${user._id}/user-order/${updatedOrder._id}`,
+	// 		{ data: orderToSend },
+	// 		{ headers: { Authorization: `Bearer ${isToken}` } }
+	// 	)
+	// 	setUpdatedOrder({})
+	// }
+	// async function handleUpdateDrink(id) {
+	// 	let foodArr = updatedOrder.food.map((food) => food._id)
+	// 	let drinkArr = updatedOrder.drink.map((drink) => drink._id)
+	// 	let drinkArrCopy = [...drinkArr]
+	// 	let i = drinkArrCopy.indexOf(id)
+	// 	if (i > -1) {
+	// 		drinkArrCopy.splice(i, 1)
+	// 	}
 
-		let drinkUp = []
+	// 	let drinkUp = []
 
-		let orderToSend = {
-			customer: updatedOrder.customer._id,
-			food: foodArr,
-			drink: drinkArrCopy,
-		}
+	// 	let orderToSend = {
+	// 		customer: updatedOrder.customer._id,
+	// 		food: foodArr,
+	// 		drink: drinkArrCopy,
+	// 	}
 
-		let updateDB = await axios.put(
-			`${API_URL}/orders/user/${user._id}/user-order/${updatedOrder._id}`,
-			{ data: orderToSend },
-			{ headers: { Authorization: `Bearer ${isToken}` } }
-		)
-		setUpdatedOrder({})
-	}
+	// 	let updateDB = await axios.put(
+	// 		`${API_URL}/orders/user/${user._id}/user-order/${updatedOrder._id}`,
+	// 		{ data: orderToSend },
+	// 		{ headers: { Authorization: `Bearer ${isToken}` } }
+	// 	)
+	// 	setUpdatedOrder({})
+	// }
 
 	// -------------------------------------------
 	const API_URL = import.meta.env.VITE_APIURL
@@ -137,7 +137,6 @@ const OrderListPage = () => {
 								key={order._id}
 								onMouseEnter={() => {
 									setUpdatedOrder(order)
-									// setFinalUpdate('')
 								}}
 							>
 								<div>{order._id}</div>
@@ -149,13 +148,13 @@ const OrderListPage = () => {
 										<div key={i}>
 											<p>{food.name}</p>
 											<p>{food.price}</p>
-											<button
+											{/* <button
 												onClick={() => {
 													handleUpdateFood(food._id)
 												}}
 											>
 												Remove item
-											</button>
+											</button> */}
 										</div>
 									)
 								})}
@@ -164,13 +163,13 @@ const OrderListPage = () => {
 										<div key={i}>
 											<p>{drink.name}</p>
 											<p>{drink.price}</p>
-											<button
+											{/* <button
 												onClick={() => {
 													handleUpdateDrink(drink._id)
 												}}
 											>
 												Remove item
-											</button>
+											</button> */}
 										</div>
 									)
 								})}
