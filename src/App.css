@@ -36,7 +36,8 @@ nav {
 /*components*/
 /*IDs*/
 /*classes*/
-.main-container {
+.main-container,
+.food-n-drink-list-container {
   width: 100vw;
   height: 90vh;
 
@@ -44,6 +45,10 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+}
+
+.food-n-drink-list-container {
+  flex-direction: row;
 }
 
 .form-container {
