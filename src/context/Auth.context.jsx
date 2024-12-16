@@ -58,8 +58,9 @@ const AuthContextWrapper = ({ children }) => {
     }
 
     function handleLogout() {
-        localStorage.removeItem('authToken');
         navigate('/');
+        localStorage.removeItem('authToken');
+        setIsLoggedIn(false);
     }
 
     //useEffect to validate the token on every refresh

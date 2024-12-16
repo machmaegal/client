@@ -12,7 +12,7 @@ const LoginPage = () => {
 		useContext(AuthContext);
 	const APIURL = import.meta.env.VITE_APIURL;
 
-	function handleLogin(e) {
+	async function handleLogin(e) {
 		e.preventDefault();
 
 		const currentUser = {
@@ -20,7 +20,7 @@ const LoginPage = () => {
 			password,
 		};
 
-		axios
+		await axios
 			.post(`${APIURL}/auth/login`, currentUser)
 			.then((res) => {
 				storeToken(res.data.data);
