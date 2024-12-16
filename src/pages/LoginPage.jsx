@@ -12,17 +12,16 @@ const LoginPage = () => {
 		useContext(AuthContext)
 	const APIURL = import.meta.env.VITE_APIURL
 
-	async function hancleCreateOrder(currentOrder, userId) {
+	async function handleCreateOrder(currentOrder, userId) {
 		const token = localStorage.getItem('authToken')
 		let orderCreated = await axios.post(
 			`${APIURL}/orders/user/${userId}/make-order`,
 			{ data: currentOrder },
 			{ headers: { Authorization: `Bearer ${token}` } }
 		)
-		// console.log(currentOrder, userId, isToken)
 	}
 
-	function handleLogin(e) {
+	async function handleLogin(e) {
 		e.preventDefault()
 
 		const currentUser = {
@@ -30,7 +29,7 @@ const LoginPage = () => {
 			password,
 		}
 
-		axios
+		await axios
 			.post(`${APIURL}/auth/login`, currentUser)
 			.then((res) => {
 				storeToken(res.data.data)
@@ -43,13 +42,13 @@ const LoginPage = () => {
 
 				if (isAdmin) {
 					setOrder({ ...order, customer: user._id })
-					hancleCreateOrder(order, user._id)
+					handleCreateOrder(order, user._id)
 					navigate('/admin')
 				} else {
 					//console.log(user._id)
 
 					setOrder({ ...order, customer: user._id })
-					hancleCreateOrder(order, user._id)
+					handleCreateOrder(order, user._id)
 					navigate('/user')
 				}
 			})
