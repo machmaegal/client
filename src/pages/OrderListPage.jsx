@@ -182,7 +182,6 @@ const OrderListPage = () => {
 								>
 									Delete Order
 								</button>
-								<button>Edit Order</button>
 							</div>
 						)
 					})}
