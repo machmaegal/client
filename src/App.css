@@ -15,8 +15,13 @@
 }
 
 body {
-  background-color: black;
-  color: green;
+  background-color: rgb(116, 8, 8);
+  color: rgb(228, 224, 23);
+}
+
+a {
+  color: rgb(228, 224, 23);
+
 }
 
 /*components*/
@@ -52,7 +57,6 @@ nav {
 .input {
   font-size: 16px;
   font-size: max(16px, 1em);
-  font-family: inherit;
   padding: 0.25em 0.5em;
   background-color: #fff;
   border: 2px solid var(--input-border);
@@ -82,16 +86,34 @@ nav {
 @media only screen and (min-width:20em) {
 
   /*COMPONENTS*/
+  .form-container {
+    padding: 1em;
+    background-color: rgb(218, 210, 210);
+
+    border: none;
+    border-radius: 10px;
+  }
 
   .form {
     gap: 5px;
-
-    background-color: brown;
+    flex-direction: column;
+    color: black;
   }
 
   .submit-button {
     margin-top: 0.2em;
+    padding: 0.3em;
+    border-radius: 5px;
+    border: solid 1px gray;
+    box-shadow: 0 0 2px black;
   }
+
+  .description {
+    padding: 0 0.15rem;
+    height: 20vh;
+    width: 100%;
+  }
+
 
   /*IDs*/
   /*classes*/

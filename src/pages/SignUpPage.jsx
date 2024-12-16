@@ -30,33 +30,35 @@ const SignUpPage = () => {
 
     return (
         <div className='main-container'>
-            <h1>create an account</h1>
-            <form onSubmit={handleSignup}>
-                <label htmlFor="name"></label>
-                <input
-                    type='name'
-                    value={name}
-                    placeholder='Name'
-                    onChange={(e) => setName(e.target.value)}
-                />
-                <label htmlFor='email'></label>
-                <input
-                    type='email'
-                    value={email}
-                    placeholder='Email'
-                    onChange={(e) => setEmail(e.target.value)}
-                />
+            <h1>create account</h1>
+            <div className='form-container'>
+                <form className='form' onSubmit={handleSignup}>
+                    <label htmlFor="name"></label>
+                    <input
+                        type='name'
+                        value={name}
+                        placeholder='Name'
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                    <label htmlFor='email'></label>
 
-                <label htmlFor='password'></label>
-                <input
-                    type='password'
-                    value={password}
-                    placeholder='Password'
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+                    <input
+                        type='email'
+                        value={email}
+                        placeholder='Email'
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
 
-                <button>Sign Up</button>
-            </form>
+                    <label htmlFor='password'></label>
+                    <input
+                        type='password'
+                        value={password}
+                        placeholder='Password'
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <button className='submit-button'>Sign Up</button>
+                </form>
+            </div>
             <p>Alredy registered ?</p>
             <Link to="/login">Login</Link>
         </div>

@@ -49,9 +49,9 @@ const LoginPage = () => {
 
 	return (
 		<div className='main-container'>
-			<section>
+			<div className='form-container'>
 				<form className='form' onSubmit={handleLogin}>
-					<label htmlFor='email'>email</label>
+					<label htmlFor='email'></label>
 					<input
 						className='input'
 						id='email'
@@ -61,7 +61,7 @@ const LoginPage = () => {
 						onChange={(e) => setEmail(e.target.value)}
 					/>
 
-					<label htmlFor='password'>Password</label>
+					<label htmlFor='password'></label>
 					<input
 						className='input'
 						id='password'
@@ -70,10 +70,9 @@ const LoginPage = () => {
 						placeholder='password'
 						onChange={(e) => setPassword(e.target.value)}
 					/>
-
-					<button>Login</button>
+					<button className='submit-button'>Login</button>
 				</form>
-			</section>
+			</div>
 			<p>New Here?</p>
 			<Link to='/signup'>Sign Up</Link>
 		</div>
