@@ -1,63 +1,63 @@
-import { useState } from 'react';
+import { useState } from 'react'
 //import { AuthContext } from '../context/Auth.context';
-import FoodCreatePage from './FoodCreatePage';
-import DrinkCreatePage from './DrinkCreatePage';
-import UserListPage from './UserListPage';
-import OrderListPage from './OrderListPage';
-import UpdateFoodAndDrink from './UpdateFoodAndDrink';
+import FoodCreatePage from './FoodCreatePage'
+import DrinkCreatePage from './DrinkCreatePage'
+import UserListPage from './UserListPage'
+import OrderListPage from './OrderListPage'
+import UpdateFoodAndDrink from './UpdateFoodAndDrink'
 
 const AdminPage = () => {
-	const [showCrudFood, setShowCrudFood] = useState('');
-	const [showCrudDrink, setShowCrudDrink] = useState('');
-	const [showCrudUser, setShowCrudUser] = useState('');
-	const [showCrudOrder, setShowCrudOrder] = useState('');
-	const [showUpdateFoodAndDrink, setShowUpdateFoodAndDrink] = useState('');
+	const [showCrudFood, setShowCrudFood] = useState('')
+	const [showCrudDrink, setShowCrudDrink] = useState('')
+	const [showCrudUser, setShowCrudUser] = useState('')
+	const [showCrudOrder, setShowCrudOrder] = useState('')
+	const [showUpdateFoodAndDrink, setShowUpdateFoodAndDrink] = useState('')
 
 	function handleStateOfView(e) {
 		switch (true) {
 			case e.target.value === 'crud-food':
-				setShowCrudFood(true);
-				setShowCrudDrink('');
-				setShowCrudUser('');
-				setShowCrudOrder('');
-				setShowUpdateFoodAndDrink('');
-				break;
+				setShowCrudFood(true)
+				setShowCrudDrink('')
+				setShowCrudUser('')
+				setShowCrudOrder('')
+				setShowUpdateFoodAndDrink('')
+				break
 			case e.target.value === 'crud-drink':
-				setShowCrudFood('');
-				setShowCrudDrink(true);
-				setShowCrudUser('');
-				setShowCrudOrder('');
-				setShowUpdateFoodAndDrink('');
-				break;
+				setShowCrudFood('')
+				setShowCrudDrink(true)
+				setShowCrudUser('')
+				setShowCrudOrder('')
+				setShowUpdateFoodAndDrink('')
+				break
 			case e.target.value === 'crud-user':
-				setShowCrudFood('');
-				setShowCrudDrink('');
-				setShowCrudUser(true);
-				setShowCrudOrder('');
-				setShowUpdateFoodAndDrink('');
-				break;
+				setShowCrudFood('')
+				setShowCrudDrink('')
+				setShowCrudUser(true)
+				setShowCrudOrder('')
+				setShowUpdateFoodAndDrink('')
+				break
 			case e.target.value === 'crud-order':
-				setShowCrudFood('');
-				setShowCrudDrink('');
-				setShowCrudUser('');
-				setShowCrudOrder(true);
-				setShowUpdateFoodAndDrink('');
-				break;
+				setShowCrudFood('')
+				setShowCrudDrink('')
+				setShowCrudUser('')
+				setShowCrudOrder(true)
+				setShowUpdateFoodAndDrink('')
+				break
 			case e.target.value === 'update-food-and-drink':
-				setShowCrudFood('');
-				setShowCrudDrink('');
-				setShowCrudUser('');
-				setShowCrudOrder('');
-				setShowUpdateFoodAndDrink(true);
-				break;
+				setShowCrudFood('')
+				setShowCrudDrink('')
+				setShowCrudUser('')
+				setShowCrudOrder('')
+				setShowUpdateFoodAndDrink(true)
+				break
 			default:
-				break;
+				break
 		}
 	}
 
 	return (
-		<div className='main-container'>
-			<h3>pick a category to display</h3>
+		<div className=''>
+			<h3>Pick a Category to Display</h3>
 			<div id='admin-menu'>
 				<label htmlFor='food'>
 					<input
@@ -67,7 +67,7 @@ const AdminPage = () => {
 						value='crud-food'
 						onClick={handleStateOfView}
 					/>{' '}
-					create food
+					Create Food
 				</label>
 
 				<label htmlFor='drink'>
@@ -78,7 +78,7 @@ const AdminPage = () => {
 						value='crud-drink'
 						onClick={handleStateOfView}
 					/>{' '}
-					create drink
+					Create Drink
 				</label>
 
 				<label htmlFor='update-food-and-drink'>
@@ -100,7 +100,7 @@ const AdminPage = () => {
 						value='crud-user'
 						onClick={handleStateOfView}
 					/>{' '}
-					user
+					User
 				</label>
 				<label htmlFor='order'>
 					<input
@@ -110,7 +110,7 @@ const AdminPage = () => {
 						value='crud-order'
 						onClick={handleStateOfView}
 					/>{' '}
-					order
+					Order
 				</label>
 			</div>
 
@@ -120,7 +120,7 @@ const AdminPage = () => {
 			{showCrudOrder && <OrderListPage />}
 			{showUpdateFoodAndDrink && <UpdateFoodAndDrink />}
 		</div>
-	);
-};
+	)
+}
 
-export default AdminPage;
+export default AdminPage

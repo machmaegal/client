@@ -14,8 +14,8 @@ const Nav = () => {
 	return (
 		<nav>
 			<div className='nav-select'>
-				<Link to='/'>food</Link>
-				<Link to='/drinks'>drink</Link>
+				<Link to='/'>Food</Link>
+				<Link to='/drinks'>Drink</Link>
 				{isLoggedIn ? <Link to='/user/my-order'>Order</Link> : ''}
 				{isLoggedIn ? (
 					<Link to='/user/all-orders'>All Orders</Link>
@@ -26,7 +26,12 @@ const Nav = () => {
 			</div>
 			<div>
 				{isLoggedIn ? (
-					<button onClick={() => handleLogout()}>Sign out</button>
+					<button
+						className='submit-button'
+						onClick={() => handleLogout()}
+					>
+						Sign out
+					</button>
 				) : (
 					<Link to='/login'>Sign In</Link>
 				)}

@@ -42,33 +42,36 @@ const UserListPage = () => {
 	}, [])
 
 	return (
-		<div className='main-container'>
+		<div className='list'>
 			{users &&
 				users.map((user) => {
 					return (
-						<div key={user._id}>
+						<div className='list-item' key={user._id}>
 							<div>
 								<p>Name: {user.name}</p>
 								<p>Email: {user.email}</p>
 								<p>Is Admin: {user.admin ? 'Yes' : 'No'}</p>
 								<p>{user.address[0]}</p>
+								<div className='button-container'>
+									<button
+										className='submit-button'
+										onClick={() => {
+											handleDeleteUser(user)
+										}}
+									>
+										Delete User
+									</button>
+									<button
+										className='submit-button'
+										onClick={() => {
+											setUserToUpdate(user)
 
-								<button
-									onClick={() => {
-										handleDeleteUser(user)
-									}}
-								>
-									Delete User
-								</button>
-								<button
-									onClick={() => {
-										setUserToUpdate(user)
-
-										navigate('/admin/update-user')
-									}}
-								>
-									Update User
-								</button>
+											navigate('/admin/update-user')
+										}}
+									>
+										Update User
+									</button>
+								</div>
 							</div>
 						</div>
 					)
