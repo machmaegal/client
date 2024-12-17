@@ -39,8 +39,8 @@ const DrinkCreatePage = () => {
 	}
 
 	return (
-		<div className='main-container'>
-			<h1>create drink</h1>
+		<div className=''>
+			<h1>Create Drink</h1>
 			<div className='form-container'>
 				<form className='form' onSubmit={handleSubmit}>
 					<label htmlFor='name'></label>
@@ -73,7 +73,7 @@ const DrinkCreatePage = () => {
 						placeholder='Description'
 					/>
 					<label htmlFor='label'></label>
-					special label
+					Special Label
 					<select
 						className='input'
 						name='label'

@@ -47,7 +47,7 @@ const AdminDrinkUpdate = () => {
 	}
 	return (
 		<div>
-			AdminDrinkUpdate
+			<h1>Admin Drink Update</h1>
 			<div className='form-container'>
 				<form className='form' onSubmit={handleUpdate}>
 					<label htmlFor='name'></label>
@@ -80,7 +80,7 @@ const AdminDrinkUpdate = () => {
 						placeholder='Description'
 					/>
 					<label htmlFor='label'></label>
-					special label
+					Special Label
 					<select
 						className='input'
 						name='label'

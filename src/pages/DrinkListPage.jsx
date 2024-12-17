@@ -49,16 +49,19 @@ const DrinkListPage = () => {
 	}, [])
 
 	return (
-		<div className='main-container'>
+		<div className='list'>
 			{drinks &&
 				drinks.map((drink) => {
 					return (
-						<div key={drink._id}>
-							<div>{drink.name}</div>
-							<div>{drink.description}</div>
+						<div className='list-item' key={drink._id}>
+							<div className='name-and-price-tack'>
+								<div>{drink.name}</div>
+								<div>{drink.description}</div>
+							</div>
 							<div>{drink.label[0]}</div>
 							<div>{drink.price + `€`}</div>
 							<button
+								className='submit-button'
 								onClick={() => {
 									if (isLoggedIn) {
 										handdleAddToCart(drink)

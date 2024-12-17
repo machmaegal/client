@@ -127,13 +127,14 @@ const OrderListPage = () => {
 
 	return (
 		<div>
-			{isLoggedIn ? <h1>Hi {user.name}</h1> : <h1>Please Log in</h1>}
+			{isLoggedIn ? <h1>Hi {user.name}</h1> : <h1>Please Log in!</h1>}
 
-			<div className='main-container'>
+			<div className='list'>
 				{orderDisplayed &&
 					orderDisplayed.map((order) => {
 						return (
 							<div
+								className='list-item'
 								key={order._id}
 								onMouseEnter={() => {
 									setUpdatedOrder(order)
@@ -175,6 +176,7 @@ const OrderListPage = () => {
 								})}
 
 								<button
+									className='submit-button'
 									onClick={() => {
 										hadleDelete(order._id)
 									}}

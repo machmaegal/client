@@ -1,3 +1,10 @@
+/* 
+colors:
+rgb(228, 224, 23) //yellow
+rgb(116, 8, 8) //red
+rgb(218, 210, 210) //form gray
+*/
+
 /*
 @media (min-width:320px)  
 @media (min-width:480px)  
@@ -14,13 +21,62 @@
   font-family: monospace, sans-serif;
 }
 
-body {
-  background-color: rgb(116, 8, 8);
-  color: rgb(228, 224, 23);
+:root {
+  --main-text-color: rgb(228, 224, 23);
+  --form-gray: rgb(218, 210, 210);
 }
 
+body {
+  background-color: rgb(116, 8, 8);
+  color: var(--main-text-color);
+}
+
+/* a {
+	color: rgb(228, 224, 23);
+	text-decoration: none;
+}
+a:hover {
+	color: rgb(228, 224, 23);
+	text-decoration: none;
+} */
 a {
-  color: rgb(228, 224, 23);
+  color: var(--main-text-color);
+  /* font-size: 20px; */
+  text-decoration: none;
+  padding: 10px 20px;
+  margin: 0 5px;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+a::before,
+a::after {
+  content: '';
+  position: absolute;
+  background-color: var(--form-gray);
+  width: 100%;
+  height: 2px;
+  transform: scaleX(0);
+  transition: transform 0.4s;
+}
+
+a::before {
+  top: 0;
+  left: 0;
+  transform-origin: left;
+}
+
+a::after {
+  bottom: 0;
+  right: 0;
+  transform-origin: right;
+}
+
+a:hover::before,
+a:hover::after {
+  transform: scaleX(1);
 }
 
 nav {
@@ -33,10 +89,15 @@ nav {
 }
 
 /*classes*/
+.main-container {
+  overflow: auto;
+  height: 90vh;
+}
+
 .main-container,
 .food-n-drink-list-container {
   width: 100vw;
-  height: 90vh;
+  /* height: 90vh; */
 
   display: flex;
   flex-direction: column;
@@ -44,14 +105,23 @@ nav {
   justify-content: flex-start;
 }
 
+/* .main-container */
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
+}
+
 .food-n-drink-list-container {
   flex-direction: row;
   align-items: flex-start;
+  justify-content: center;
 }
 
 .form-container {
   padding: 1em;
-  background-color: rgb(218, 210, 210);
+  background-color: var(--form-gray);
   border: none;
   border-radius: 10px;
 }
@@ -68,11 +138,15 @@ nav {
   font-size: max(16px, 1em);
   padding: 0.25em 0.5em;
   background-color: #fff;
-  border: 2px solid var(--input-border);
+  border: 2px solid gray
+    /* var(--input-border) */
+  ;
   border-radius: 4px;
 }
 
 .footer {
+  position: sticky;
+  bottom: 0;
   height: 3vh;
   display: flex;
   align-items: center;
@@ -92,10 +166,45 @@ nav {
 }
 
 .list-item {
+  max-width: 30%;
+  min-width: 250px;
   display: flex;
   flex-direction: column;
+  padding: 5px 10px;
   border-radius: 5px;
-  box-shadow: 0 0 5px;
+  color: black;
+  /* box-shadow: 0 0 5px black; */
+  background-color: rgb(218, 210, 210);
+  transition: 0.3s ease;
+}
+
+.list-item:hover {
+  /* box-shadow: 0 10px 10px rgb(62, 62, 62); */
+  scale: 1.0001;
+}
+
+.button-container {
+  display: flex;
+  column-gap: 5px;
+}
+
+.submit-button:hover {
+  background-color: #fff;
+  scale: 1.01;
+}
+
+.submit-button {
+  margin-top: 0.2em;
+  padding: 0.3em;
+  border-radius: 5px;
+  border: solid 1px gray;
+  box-shadow: 0 0 2px black;
+  transition: scale 0.1s;
+}
+
+.name-and-price-tack {
+  display: flex;
+  justify-content: space-between;
 }
 
 /*IDs*/
@@ -106,7 +215,7 @@ nav {
   justify-content: space-around;
 }
 
-@media only screen and (min-width:20em) {
+@media only screen and (min-width: 20em) {
   .form {
     gap: 5px;
     flex-direction: column;
@@ -128,19 +237,17 @@ nav {
   .list-item {
     width: 95%;
   }
-
 }
 
-@media only screen and (min-width:40em) {
+@media only screen and (min-width: 40em) {
   nav {
     justify-content: space-between;
   }
 
   #admin-menu {
     justify-content: center;
-    gap: 20px
+    gap: 20px;
   }
-
 }
 
 @media only screen and (min-width: 60em) {
@@ -162,7 +269,6 @@ nav {
 
   #admin-menu {
     justify-content: center;
-    gap: 20px
+    gap: 20px;
   }
-
 }

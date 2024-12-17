@@ -37,16 +37,19 @@ const FoodListPage = () => {
 	}, [])
 
 	return (
-		<div className='main-container'>
+		<div className='list'>
 			{foods &&
 				foods.map((food) => {
 					return (
-						<div key={food._id} className='item-card'>
-							<div>{food.name}</div>
+						<div key={food._id} className='list-item'>
+							<div className='name-and-price-tack'>
+								<p>{food.name}</p>
+								<p>{food.price + `€`}</p>
+							</div>
 							<div>{food.description}</div>
 							<div>{food.label[0]}</div>
-							<div>{food.price + `€`}</div>
 							<button
+								className='submit-button'
 								onClick={() => {
 									if (isLoggedIn) {
 										handdleAddToCart(food)
