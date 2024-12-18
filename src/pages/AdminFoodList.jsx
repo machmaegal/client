@@ -49,26 +49,32 @@ const AdminFoodList = () => {
 						<div className='list-item' key={food._id}>
 							<div className='name-and-price-tack'>
 								<div>{food.name}</div>
-								<div>{food.description}</div>
+								<div>{food.price + `€`}</div>
 							</div>
-							<div className='label'>{food.label.at(0)}</div>
-							<div>{food.price + `€`}</div>
-							<button
-								className='submit-button'
-								onClick={() => handleDeleteFoodOrDrink(food)}
-							>
-								Delete Food
-							</button>
-							<button
-								className='submit-button'
-								onClick={() => {
-									setFoodToUpdate(food)
+							<div>{food.description}</div>
+							<div className='label'>
+								<div>{food.label.at(0)}</div>
+							</div>
+							<div className='button-container'>
+								<button
+									className='submit-button'
+									onClick={() =>
+										handleDeleteFoodOrDrink(food)
+									}
+								>
+									Delete Food
+								</button>
+								<button
+									className='submit-button'
+									onClick={() => {
+										setFoodToUpdate(food)
 
-									navigate('/admin/update-food')
-								}}
-							>
-								Update Food
-							</button>
+										navigate('/admin/update-food')
+									}}
+								>
+									Update Food
+								</button>
+							</div>
 						</div>
 					)
 				})}

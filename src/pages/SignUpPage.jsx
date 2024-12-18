@@ -8,9 +8,10 @@ const SignUpPage = () => {
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+	const [token, setToken] = useState('')
 	const navigate = useNavigate()
 
-	function handleSignup(e) {
+	async function handleSignup(e) {
 		e.preventDefault()
 
 		const newUser = {
@@ -18,17 +19,18 @@ const SignUpPage = () => {
 			email,
 			password,
 		}
-		axios
+
+		await axios
 			.post(`${APIURL}/auth/signup`, newUser)
 			.then((res) => {
-				console.log(res.data)
+				// console.log(res.data)
 				navigate('/login')
 			})
 			.catch((err) => console.log('frontend Error signup', err))
 	}
 
 	return (
-		<div className=''>
+		<div className='list'>
 			<br />
 			<h1>Create Account</h1>
 			<br />
@@ -36,6 +38,7 @@ const SignUpPage = () => {
 				<form className='form' onSubmit={handleSignup}>
 					<label htmlFor='name'></label>
 					<input
+						className='input'
 						type='name'
 						value={name}
 						placeholder='Name'
@@ -44,6 +47,7 @@ const SignUpPage = () => {
 					<label htmlFor='email'></label>
 
 					<input
+						className='input'
 						type='email'
 						value={email}
 						placeholder='Email'
@@ -52,6 +56,7 @@ const SignUpPage = () => {
 
 					<label htmlFor='password'></label>
 					<input
+						className='input'
 						type='password'
 						value={password}
 						placeholder='Password'

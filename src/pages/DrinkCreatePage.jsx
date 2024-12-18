@@ -39,7 +39,7 @@ const DrinkCreatePage = () => {
 	}
 
 	return (
-		<div className=''>
+		<div className='list'>
 			<br />
 			<h1>Create Drink</h1>
 			<br />

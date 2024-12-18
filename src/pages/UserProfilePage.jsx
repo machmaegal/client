@@ -52,7 +52,7 @@ const UserProfilePage = () => {
 	}
 
 	return (
-		<div className=''>
+		<div className='list'>
 			<br />
 			{profileUser && (
 				<div className='form-container'>

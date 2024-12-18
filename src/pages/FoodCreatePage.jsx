@@ -39,7 +39,7 @@ const FoodCreatePage = () => {
 	}
 
 	return (
-		<div className=''>
+		<div className='list'>
 			<br />
 			<h1>Create Dish</h1>
 			<br />

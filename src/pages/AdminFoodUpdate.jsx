@@ -46,7 +46,7 @@ const AdminFoodUpdate = () => {
 		}
 	}
 	return (
-		<div>
+		<div className='list'>
 			AdminFoodUpdate
 			<div className='form-container'>
 				<form className='form' onSubmit={handleUpdate}>

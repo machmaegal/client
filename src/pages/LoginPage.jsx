@@ -39,7 +39,6 @@ const LoginPage = () => {
 				// if false is regular user
 
 				if (isAdmin) {
-					console.log(user)
 					setOrder({ ...order, customer: user._id })
 					setOrderDetail({ ...order, customer: user._id })
 					navigate('/admin')
@@ -50,14 +49,16 @@ const LoginPage = () => {
 				}
 			})
 			.catch((err) => {
-				console.log(err)
+				// console.log(err)
 				setErrorMessage(err.res.data.message)
 			})
 	}
 
 	return (
-		<div className=''>
+		<div className='list'>
+			<br />
 			<h1>Login Page</h1>
+			<br />
 			<div className='form-container'>
 				<form className='form' onSubmit={handleLogin}>
 					<label htmlFor='email'></label>

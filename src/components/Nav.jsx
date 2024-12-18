@@ -3,7 +3,7 @@ import { AuthContext } from '../context/Auth.context'
 import { useContext, useState } from 'react'
 
 const Nav = () => {
-	const { isLoggedIn, handleLogout } = useContext(AuthContext)
+	const { isLoggedIn, isAdmin, handleLogout } = useContext(AuthContext)
 
 	/* async function logout() {
 		setUserIsLoggedIn(isLoggedIn);
@@ -23,6 +23,7 @@ const Nav = () => {
 					''
 				)}
 				{isLoggedIn ? <Link to='/user'>Profile Page</Link> : ''}
+				{isAdmin ? <Link to='/admin'>Admin Tab</Link> : ''}
 			</div>
 			<div>
 				{isLoggedIn ? (

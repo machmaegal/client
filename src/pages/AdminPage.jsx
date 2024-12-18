@@ -56,7 +56,7 @@ const AdminPage = () => {
 	}
 
 	return (
-		<div className=''>
+		<div className='list'>
 			<br />
 			<h1>Pick a Category to Display</h1>
 			<br />

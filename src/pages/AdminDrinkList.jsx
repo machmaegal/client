@@ -40,7 +40,7 @@ const AdminDrinkList = () => {
 		}
 	}
 	return (
-		<div className=' list'>
+		<div className='list'>
 			{drinks &&
 				drinks.map((drink) => {
 					return (
@@ -51,22 +51,26 @@ const AdminDrinkList = () => {
 							</div>
 							<div>{drink.description}</div>
 							<div className='label'>{drink.label.at(0)}</div>
-							<button
-								className='submit-button'
-								onClick={() => handleDeleteFoodOrDrink(drink)}
-							>
-								Delete Drink
-							</button>
-							<button
-								className='submit-button'
-								onClick={() => {
-									setDrinkToUpdate(drink)
+							<div className='button-container'>
+								<button
+									className='submit-button'
+									onClick={() =>
+										handleDeleteFoodOrDrink(drink)
+									}
+								>
+									Delete Drink
+								</button>
+								<button
+									className='submit-button'
+									onClick={() => {
+										setDrinkToUpdate(drink)
 
-									navigate('/admin/update-drink')
-								}}
-							>
-								Update Drink
-							</button>
+										navigate('/admin/update-drink')
+									}}
+								>
+									Update Drink
+								</button>
+							</div>
 						</div>
 					)
 				})}
