@@ -40,7 +40,9 @@ const FoodCreatePage = () => {
 
 	return (
 		<div className=''>
+			<br />
 			<h1>Create Dish</h1>
+			<br />
 			<div className='form-container'>
 				<form className='form' onSubmit={handleSubmit}>
 					<label htmlFor='name'></label>

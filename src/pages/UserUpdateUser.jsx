@@ -38,7 +38,9 @@ const UserUpdateUser = () => {
 
 	return (
 		<div>
-			UserUpdateUser
+			<br />
+			<h1>Update User</h1>
+			<br />
 			<div>
 				<div className='form-container'>
 					<form className='form' onSubmit={handleUpdateUser}>

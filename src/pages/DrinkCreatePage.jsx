@@ -40,7 +40,9 @@ const DrinkCreatePage = () => {
 
 	return (
 		<div className=''>
+			<br />
 			<h1>Create Drink</h1>
+			<br />
 			<div className='form-container'>
 				<form className='form' onSubmit={handleSubmit}>
 					<label htmlFor='name'></label>

@@ -57,7 +57,9 @@ const AdminPage = () => {
 
 	return (
 		<div className=''>
-			<h3>Pick a Category to Display</h3>
+			<br />
+			<h1>Pick a Category to Display</h1>
+			<br />
 			<div id='admin-menu'>
 				<label htmlFor='food'>
 					<input
@@ -112,8 +114,9 @@ const AdminPage = () => {
 					/>{' '}
 					Order
 				</label>
+				<br />
+				<br />
 			</div>
-
 			{showCrudFood && <FoodCreatePage />}
 			{showCrudDrink && <DrinkCreatePage />}
 			{showCrudUser && <UserListPage />}

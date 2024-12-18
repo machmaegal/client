@@ -50,16 +50,19 @@ const DrinkListPage = () => {
 
 	return (
 		<div className='list'>
+			<br />
+			<h1>Drink Menu</h1>
+			<br />
 			{drinks &&
 				drinks.map((drink) => {
 					return (
 						<div className='list-item' key={drink._id}>
 							<div className='name-and-price-tack'>
 								<div>{drink.name}</div>
-								<div>{drink.description}</div>
+								<div>{drink.price + `€`}</div>
 							</div>
-							<div>{drink.label[0]}</div>
-							<div>{drink.price + `€`}</div>
+							<div>{drink.description}</div>
+							<div className='label'>{drink.label[0]}</div>
 							<button
 								className='submit-button'
 								onClick={() => {

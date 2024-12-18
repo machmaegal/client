@@ -100,29 +100,27 @@ function OrderDetailPage() {
 			food: foodArr,
 			drink: drinkArrCopy,
 		}
-		console.log(orderToSend)
-		// setOrder(orderToSend)
-		// let updateDB = await axios.put(
-		// 	`${API_URL}/orders/user/${user._id}/user-order/${updatedOrder._id}`,
-		// 	{ data: orderToSend },
-		// 	{ headers: { Authorization: `Bearer ${isToken}` } }
-		// )
 	}
 
 	// -------------------------------------------
 
 	return (
-		<div>
+		<div className='list'>
+			<br />
 			<h1>Welcome back {user.name.toUpperCase()}!</h1>
+			<br />
 			<p>Please navigate between food and drink tabs!</p>
+			<br />
 			{orderDetail.food.length > 0
 				? orderDetail.food.map((food) => {
 						return (
-							<div key={food._id}>
-								<div>{food.name}</div>
+							<div className='list-item' key={food._id}>
+								<div className='name-and-price-tack'>
+									<div>{food.name}</div>
+									<div>{food.price + `€`}</div>
+								</div>
 								<div>{food.description}</div>
-								<div>{food.label[0]}</div>
-								<div>{food.price}</div>
+								<div className='label'>{food.label[0]}</div>
 								<button
 									onClick={() => {
 										handleUpdateFood(food._id)
@@ -137,12 +135,15 @@ function OrderDetailPage() {
 			{orderDetail.drink.length > 0
 				? orderDetail.drink.map((drink) => {
 						return (
-							<div key={drink._id}>
-								<div>{drink.name}</div>
+							<div className='list-item' key={drink._id}>
+								<div className='name-and-price-tack'>
+									<div>{drink.name}</div>
+									<div>{drink.price + `€`}</div>
+								</div>
 								<div>{drink.description}</div>
-								<div>{drink.label[0]}</div>
-								<div>{drink.price}</div>
+								<div className='label'>{drink.label[0]}</div>
 								<button
+									className='submit-button'
 									onClick={() => {
 										handleUpdateDrink(drink._id)
 									}}
@@ -154,9 +155,13 @@ function OrderDetailPage() {
 				  })
 				: ''}
 			{orderDetail.drink.length > 0 ? (
-				<button onClick={handleCreateOrder}>Place Order</button>
+				<button className='submit-button' onClick={handleCreateOrder}>
+					Place Order
+				</button>
 			) : orderDetail.food.length > 0 ? (
-				<button onClick={handleCreateOrder}>Place Order</button>
+				<button className='submit-button' onClick={handleCreateOrder}>
+					Place Order
+				</button>
 			) : (
 				''
 			)}

@@ -38,6 +38,9 @@ const FoodListPage = () => {
 
 	return (
 		<div className='list'>
+			<br />
+			<h1>Food Menu</h1>
+			<br />
 			{foods &&
 				foods.map((food) => {
 					return (
@@ -47,7 +50,7 @@ const FoodListPage = () => {
 								<p>{food.price + `€`}</p>
 							</div>
 							<div>{food.description}</div>
-							<div>{food.label[0]}</div>
+							<div className='label'>{food.label[0]}</div>
 							<button
 								className='submit-button'
 								onClick={() => {

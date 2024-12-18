@@ -51,7 +51,7 @@ const AdminFoodList = () => {
 								<div>{food.name}</div>
 								<div>{food.description}</div>
 							</div>
-							<div>{food.label.at(0)}</div>
+							<div className='label'>{food.label.at(0)}</div>
 							<div>{food.price + `€`}</div>
 							<button
 								className='submit-button'

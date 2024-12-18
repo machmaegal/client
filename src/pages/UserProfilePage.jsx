@@ -53,6 +53,7 @@ const UserProfilePage = () => {
 
 	return (
 		<div className=''>
+			<br />
 			{profileUser && (
 				<div className='form-container'>
 					<form className='form' onSubmit={handleUpdate}>

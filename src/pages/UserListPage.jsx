@@ -43,6 +43,7 @@ const UserListPage = () => {
 
 	return (
 		<div className='list'>
+			<br />
 			{users &&
 				users.map((user) => {
 					return (
@@ -50,7 +51,9 @@ const UserListPage = () => {
 							<div>
 								<p>Name: {user.name}</p>
 								<p>Email: {user.email}</p>
-								<p>Is Admin: {user.admin ? 'Yes' : 'No'}</p>
+								<p className='label'>
+									Is Admin: {user.admin ? 'Yes' : 'No'}
+								</p>
 								<p>{user.address[0]}</p>
 								<div className='button-container'>
 									<button

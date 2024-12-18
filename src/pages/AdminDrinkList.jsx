@@ -50,7 +50,7 @@ const AdminDrinkList = () => {
 								<div>{drink.price + `€`}</div>
 							</div>
 							<div>{drink.description}</div>
-							<div>{drink.label.at(0)}</div>
+							<div className='label'>{drink.label.at(0)}</div>
 							<button
 								className='submit-button'
 								onClick={() => handleDeleteFoodOrDrink(drink)}

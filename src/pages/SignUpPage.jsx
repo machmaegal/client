@@ -29,7 +29,9 @@ const SignUpPage = () => {
 
 	return (
 		<div className=''>
+			<br />
 			<h1>Create Account</h1>
+			<br />
 			<div className='form-container'>
 				<form className='form' onSubmit={handleSignup}>
 					<label htmlFor='name'></label>

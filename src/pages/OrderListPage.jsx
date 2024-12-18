@@ -11,53 +11,7 @@ const OrderListPage = () => {
 	// --------------------------
 	// update order
 	const [updatedOrder, setUpdatedOrder] = useState({})
-
-	// async function handleUpdateFood(id) {
-	// 	let foodArr = updatedOrder.food.map((food) => food._id)
-	// 	let drinkArr = updatedOrder.drink.map((drink) => drink._id)
-	// 	let foodArrCopy = [...foodArr]
-	// 	let i = foodArrCopy.indexOf(id)
-	// 	if (i > -1) {
-	// 		foodArrCopy.splice(i, 1)
-	// 	}
-
-	// 	let orderToSend = {
-	// 		customer: updatedOrder.customer._id,
-	// 		food: foodArrCopy,
-	// 		drink: drinkArr,
-	// 	}
-
-	// 	let updateDB = await axios.put(
-	// 		`${API_URL}/orders/user/${user._id}/user-order/${updatedOrder._id}`,
-	// 		{ data: orderToSend },
-	// 		{ headers: { Authorization: `Bearer ${isToken}` } }
-	// 	)
-	// 	setUpdatedOrder({})
-	// }
-	// async function handleUpdateDrink(id) {
-	// 	let foodArr = updatedOrder.food.map((food) => food._id)
-	// 	let drinkArr = updatedOrder.drink.map((drink) => drink._id)
-	// 	let drinkArrCopy = [...drinkArr]
-	// 	let i = drinkArrCopy.indexOf(id)
-	// 	if (i > -1) {
-	// 		drinkArrCopy.splice(i, 1)
-	// 	}
-
-	// 	let drinkUp = []
-
-	// 	let orderToSend = {
-	// 		customer: updatedOrder.customer._id,
-	// 		food: foodArr,
-	// 		drink: drinkArrCopy,
-	// 	}
-
-	// 	let updateDB = await axios.put(
-	// 		`${API_URL}/orders/user/${user._id}/user-order/${updatedOrder._id}`,
-	// 		{ data: orderToSend },
-	// 		{ headers: { Authorization: `Bearer ${isToken}` } }
-	// 	)
-	// 	setUpdatedOrder({})
-	// }
+	const [total, setTotal] = useState(0)
 
 	// -------------------------------------------
 	const API_URL = import.meta.env.VITE_APIURL
@@ -124,11 +78,20 @@ const OrderListPage = () => {
 		}
 		fetchOrders()
 	}, [user._id, updatedOrder._id])
-
+	// -----------------------------
+	// total function
+	function totalBill(order) {
+		let total = 0
+		order.food.forEach((food) => (total += food.price))
+		order.drink.forEach((drink) => (total += drink.price))
+		return total
+	}
+	// ----------------------------
 	return (
-		<div>
+		<div className='list'>
+			<br />
 			{isLoggedIn ? <h1>Hi {user.name}</h1> : <h1>Please Log in!</h1>}
-
+			<br />
 			<div className='list'>
 				{orderDisplayed &&
 					orderDisplayed.map((order) => {
@@ -140,15 +103,22 @@ const OrderListPage = () => {
 									setUpdatedOrder(order)
 								}}
 							>
-								<div>{order._id}</div>
+								<p className='name-and-price-tack'>order id:</p>
+								<div className='id-tack'>{order._id}</div>
+								<br />
+								<p className='name-and-price-tack'>Customer:</p>
 								<div>{order.customer.name}</div>
 								<div>{order.customer.email}</div>
+								<br />
 
+								<p className='name-and-price-tack'>Items:</p>
 								{order.food.map((food, i) => {
 									return (
 										<div key={i}>
-											<p>{food.name}</p>
-											<p>{food.price}</p>
+											<div className='name-price-format-container'>
+												<p>{food.name}</p>
+												<p>{food.price}€</p>
+											</div>
 											{/* <button
 												onClick={() => {
 													handleUpdateFood(food._id)
@@ -162,8 +132,10 @@ const OrderListPage = () => {
 								{order.drink.map((drink, i) => {
 									return (
 										<div key={i}>
-											<p>{drink.name}</p>
-											<p>{drink.price}</p>
+											<div className='name-price-format-container'>
+												<p>{drink.name}</p>
+												<p>{drink.price}€</p>
+											</div>
 											{/* <button
 												onClick={() => {
 													handleUpdateDrink(drink._id)
@@ -174,7 +146,14 @@ const OrderListPage = () => {
 										</div>
 									)
 								})}
-
+								<br />
+								<div className='name-price-format-container'>
+									<p className='name-and-price-tack'>
+										Total:
+									</p>
+									<p>{totalBill(order)}€</p>
+								</div>
+								<br />
 								<button
 									className='submit-button'
 									onClick={() => {
