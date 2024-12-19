@@ -1,5 +1,5 @@
 const About = () => {
-	return <h1>Two Chefs One Deli</h1>
-}
+	return <h1 id='about'>Two Chefs One Deli</h1>;
+};
 
-export default About
+export default About;

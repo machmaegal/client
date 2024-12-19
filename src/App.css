@@ -91,8 +91,9 @@ nav {
 /*classes*/
 .main-container {
 	overflow: auto;
-	height: 90vh;
+	height: 86vh;
 }
+
 .label {
 	font-size: small;
 	font-weight: 500;
@@ -105,6 +106,7 @@ nav {
 	background-color: rgb(116, 8, 8);
 	/* border: solid 1px gray; */
 }
+
 .main-container,
 .food-n-drink-list-container {
 	width: 100vw;
@@ -149,17 +151,25 @@ nav {
 	font-size: max(16px, 1em);
 	padding: 0.25em 0.5em;
 	background-color: #fff;
-	border: 2px solid gray /* var(--input-border) */;
+	border: 2px solid gray
+		/* var(--input-border) */
+	;
 	border-radius: 4px;
 }
 
 .footer {
 	position: sticky;
 	bottom: 0;
-	height: 3vh;
+	height: 7vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	background-color: rgb(116, 8, 8);
+}
+
+#about {
+	margin-bottom: 0;
+	padding-bottom: 0;
 }
 
 .nav-select {
@@ -249,7 +259,7 @@ nav {
 		padding: 2vw;
 	}
 
-	.food-n-drink-list-container > .main-container {
+	.food-n-drink-list-container>.main-container {
 		row-gap: 1vh;
 	}
 
@@ -270,6 +280,7 @@ nav {
 }
 
 @media only screen and (min-width: 60em) {
+
 	/*COMPONENTS*/
 	nav {
 		justify-content: space-between;
